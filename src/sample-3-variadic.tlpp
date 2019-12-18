@@ -1,0 +1,59 @@
+
+/*
+TDN:
+https://tdn.totvs.com/display/tec/Variadic
+*/
+
+user function functionWithVariadic( parms as variadic )
+    
+    local nPos    := 0
+
+    conout( "      >>> Passou em: U_functionWithVariadic()" )
+
+    if ( parms <> Nil )
+        
+        for nPos := 1 to parms:vCount
+            conout( "         >>> parametro |" + cValtoChar(nPos) + "| tipo |" + valtype( parms:vArgs[nPos] ) + "| valor |" + procValue( parms:vArgs[nPos] ) + "|" )
+        next nPos
+
+    else
+        conout( "         >>> nao recebeu parametros" )
+    endif
+
+return 
+
+/* ======================================================================
+====================================================================== */
+static function procValue( xValue )
+    
+    local nA    := 0
+    local cRet  := ''
+    local cType := valtype( xValue )
+
+    do case
+        case cType == "C"
+            cRet := xValue
+        case cType == "N"
+            cRet := cValToChar(xValue)
+        case cType == "D"
+            cRet := DtoC(xValue)
+        case cType == "L"
+            cRet := if(xValue,'true','false')
+        case cType == "O"
+            cRet := 'object'
+        case cType == "U"
+            cRet := 'nil'
+        case cType == "B"
+            cRet := 'code block'
+        case cType == "A"
+            cRet := '{'
+            for nA := 1 to len( xValue )
+                if ( nA > 1 )
+                    cRet += ','
+                endif
+                cRet += cValToChar(xValue[nA])
+            next nA
+            cRet += '}'
+    endcase
+
+return cRet

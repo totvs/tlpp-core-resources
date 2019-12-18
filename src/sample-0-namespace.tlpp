@@ -1,0 +1,11 @@
+
+/*
+TDN:
+https://tdn.totvs.com/display/tec/Namespace
+*/
+
+namespace sample.core
+
+user function example()
+    conout( "      >>> Passou em: sample.core.U_example()" )
+return 

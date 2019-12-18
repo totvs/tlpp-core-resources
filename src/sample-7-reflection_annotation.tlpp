@@ -1,0 +1,25 @@
+
+/*
+TDN:
+https://tdn.totvs.com/display/tec/Reflection+e+Annotation
+*/
+
+@annotation sampleAnnotation
+    name  as char
+    order as numeric default 1
+@end
+
+@sampleAnnotation("sem nomear")
+user function annotation1()
+    conout( '1' )
+return
+
+@sampleAnnotation(name = "nomeando 1")
+user function annotation2()
+    conout( '2' )
+return
+
+@sampleAnnotation(name = "nomeando 2", order=1000)
+user function annotation3()
+    conout( '3' )
+return

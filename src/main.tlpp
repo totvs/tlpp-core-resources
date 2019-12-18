@@ -1,0 +1,94 @@
+
+main function tlppCoreResources()
+
+    local aArr  := {}
+    local nA    := 0
+    local oObj
+    local aRetMethods
+    local aRetData
+    local aFunctions
+    local jProp
+
+conout( "   -------------" )
+conout( "   >>> START <<<" )
+    
+    // 0 - Namespace
+    // -------------
+        conout('')
+        sample.core.U_example()
+
+    // 1 - Nomes Longos
+        conout('')
+        U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx1()
+        U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx2()
+
+    // 2 - Namespace + Nomes Longos
+        conout('')
+        sample.core.U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx3()
+        sample.core.U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx4()
+
+    // 3 - Variadic
+        conout('')
+        aadd( aArr, 'pos1' )
+        aadd( aArr, 'pos2' )
+
+        U_functionWithVariadic()
+        U_functionWithVariadic( 'param1' )
+        U_functionWithVariadic( 'param1', 'param2' )
+        U_functionWithVariadic( 'param1', 'param2', 'param3' )
+        U_functionWithVariadic( 'param1', 'param2', 'param3', date() )
+        U_functionWithVariadic( 'param1', 'param2', 'param3', 34    , .T. )
+        U_functionWithVariadic( 'param1', 'param2', 'param3', aArr, .F. )
+
+    // 4 - JSON inLine
+        conout('')
+        U_jsonInLine()
+
+    // 5 - Modificadores de acesso
+        conout('')
+        oObj := sampleClass():New()
+            oObj:getValue()
+            oObj:setValue( 'teste de set' )
+            oObj:getValue()
+            // ATENCAO
+            // Se ativar a linha abaixo, tem que gerar o seguinte erro: "Invalid call to a PRIVATE data named"
+            //conout( oObj:xValue )
+            conout( "         >>> acesso em DATA PUBLIC: oObj:dDate -> [" + cValToChar(oObj:dDate) + "]" )
+            oObj:dDate := Date() - 1
+            conout( "         >>> acesso em DATA PUBLIC: oObj:dDate -> [" + cValToChar(oObj:dDate) + "] apos mofidificacao de valor" )
+            // ATENCAO
+            // Se ativar a linha abaixo, tem que gerar o seguinte erro: "Invalid call to a PRIVATE method named"
+            //oObj:setDate( date() )
+        freeObj( oObj )
+        
+
+    // 6 - tGetData() e tGetMethods()
+        conout('')
+        conout( "      >>> Passou em: sampleClass():TGetMethods()" )
+        aRetMethods := sampleClass():TGetMethods()
+        for nA := 1 to len(aRetMethods)
+            conout( '         >>> [' + cValToChar(nA) + '] ' + aRetMethods[nA] )
+        next nA
+
+        conout( "      >>> Passou em: sampleClass():TGetData()" )
+        aRetData := sampleClass():TGetData()
+        for nA := 1 to len(aRetData)
+            conout( '         >>> [' + cValToChar(nA) + '] ' + aRetData[nA] )
+        next nA
+
+    // 7 - Reflection e Annotation
+        conout('')
+        conout( "      >>> Passou em: @annotation sampleAnnotation" )
+        aFunctions := Reflection.getFunctionsByAnnotation("sampleAnnotation")
+        for nA := 1 to len(aFunctions)
+            conout( '         >>> [' + aFunctions[nA][2] + '] ' + aFunctions[nA][1] )
+            
+            jProp := Reflection.getFunctionAnnotation( aFunctions[nA][1], aFunctions[nA][2], "sampleAnnotation")
+                conout( '            >>> name [' + jProp['name'] + ']  order [' + cValToChar(jProp['order']) + ']' )
+        next nA
+
+
+conout('')
+conout( "   >>> END <<<" )
+conout( "   -----------" )
+return

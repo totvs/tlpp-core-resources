@@ -1,0 +1,10 @@
+
+namespace sample.core
+
+user function nomeLongoAgoraEhPossivelAlemDos10CaracteresEx3()
+    conout( "      >>> Passou em: sample.core.U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx3()" )
+return 
+
+user function nomeLongoAgoraEhPossivelAlemDos10CaracteresEx4()
+    conout( "      >>> Passou em: sample.core.U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx4()" )
+return 

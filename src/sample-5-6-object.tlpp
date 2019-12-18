@@ -1,0 +1,40 @@
+
+/*
+TDN:
+https://tdn.totvs.com/display/tec/Encapsulamento+-+Modificador+de+Acesso
+https://tdn.totvs.com/display/tec/TGetData+e+TGetMethods
+*/
+
+#include "tlpp-core.th"
+
+class sampleClass
+
+    private data xValue
+    public  data dDate
+
+    private method setDate()
+    public  method new()        constructor
+    public  method setValue()
+    public  method getValue()
+
+endclass
+
+method new() class sampleClass
+    ::xValue := ''
+    ::setDate( date() )
+    conout( "      >>> Passou em: sampleClass():new()" )
+return self
+
+method setDate( dDate ) class sampleClass
+    ::dDate := dDate
+return
+
+method setValue(xParam) class sampleClass
+    conout( "         >>> set em DATA PRIVATE: xValue -> [" + cValToChar(xParam) + "]" )
+    ::xValue := xParam
+return
+
+method getValue() class sampleClass
+    conout( "         >>> get em DATA PRIVATE: xValue -> [" + cValToChar(::xValue) + "]" )
+return ::xValue
+

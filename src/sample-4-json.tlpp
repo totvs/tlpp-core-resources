@@ -1,0 +1,36 @@
+
+/*
+TDN:
+https://tdn.totvs.com/display/tec/Json
+*/
+
+user function jsonInLine()
+
+    local varJson1 := { "teste" : { "var1" : "val_1_1", "var2": "val_1_2", "var3": "val_1_3" }}
+    local varJson2 := { "teste" : 123}
+    local varJson3 := { "teste" : { "var1" : varJson1['teste']['var1'], "var2": "val_3_2" }}
+    
+    conout( "      >>> Passou em: U_jsonInLine()" )
+
+    conout( "         >>> varJson1 -> " + varJson1:toJson() )
+    conout( "            >>> varJson1['teste']['var1'] -> " + varJson1['teste']['var1'] )
+    conout( "            >>> varJson1['teste']['var2'] -> " + varJson1['teste']['var2'] )
+    conout( "            >>> varJson1['teste']['var3'] -> " + varJson1['teste']['var3'] )
+
+    conout( "         >>> varJson2 -> " + varJson2:toJson() )
+    conout( "            >>> varJson2['teste'] -> " + cValToChar( varJson2['teste'] ) )
+
+    conout( "         >>> varJson3 -> " + varJson3:toJson() )
+    conout( "            >>> varJson3['teste']['var1'] -> " + varJson3['teste']['var1'] )
+    conout( "            >>> varJson3['teste']['var2'] -> " + varJson3['teste']['var2'] )
+
+    // Passando como parametro construindo o JSON diretamente na passagem
+    func_teste( { "teste" : { "var1" : "val_4_1", "var2": "val_4_2", "var3": "val_4_3" }} )
+
+return 
+
+static function func_teste( varJson4 )
+    conout( "         >>> varJson4 -> " + varJson4:toJson() )
+    conout( "            >>> varJson4['teste']['var1'] -> " + varJson4['teste']['var1'] )
+    conout( "            >>> varJson4['teste']['var2'] -> " + varJson4['teste']['var2'] )
+return

@@ -1,0 +1,13 @@
+
+/*
+TDN:
+https://tdn.totvs.com/display/tec/Nomes+longos
+*/
+
+user function nomeLongoAgoraEhPossivelAlemDos10CaracteresEx1()
+    conout( "      >>> Passou em: U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx1()" )
+return 
+
+user function nomeLongoAgoraEhPossivelAlemDos10CaracteresEx2()
+    conout( "      >>> Passou em: U_nomeLongoAgoraEhPossivelAlemDos10CaracteresEx2()" )
+return 

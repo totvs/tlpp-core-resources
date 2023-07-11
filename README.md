@@ -1,5 +1,5 @@
 # tlpp-core-resources
 
-Recursos exclusivos do TL++ definidos em seu Core
+Exemplos de uso dos recursos nativos da Linguagem TLPP.
 
 > Para executar os testes, execute a Main Function tlppCoreResources()
